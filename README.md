@@ -13,7 +13,7 @@ install.packages('Hmisc')
 
 ### Running
 
-``
+```
 setwd("<path-to-repo>/Code/")
 source('plot.R')
 ```
