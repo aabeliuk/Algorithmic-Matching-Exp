@@ -3,6 +3,8 @@ Data and code for the Paper "Price of Anarchy in Algorithmic Matching of Romanti
 
 
 ## R code for plotting Figures
+We have tested with R version 3.4.1 (2017-06-30) -- "Single Candle" in Mac OSX Sierra.
+
 
 ### Dependencies
 
