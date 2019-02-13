@@ -12,6 +12,7 @@
 # library(sjPlot)
 # library(effects)
 
+library(utils)
 library(ggplot2)
 library(Hmisc)
 
@@ -1007,6 +1008,20 @@ correlation.test.normalize <- function(mydata) {
   print(p)
   
 }
+
+
+solve.poa <- function(a){
+  #q(u) = u(1-u)^(1-a)
+  #q'(u) = (1 - u)^(-a)*(a*u - 2*u + 1)
+  #Equation 7 in manuscript gives
+  
+  fun <- function (u,a) u/2 - ((1 - u)^(-a)*(a*u - 2*u + 1))/(1+u*(1-u)^(1-a))^2
+  uni<-uniroot(fun, c(0, 1),0.0)$root
+  return(uni/2)
+  
+}
+
+
 
 #replace Nas in payoff with outside payment of 6 cents
 add.outside_payment <- function(mydata){
