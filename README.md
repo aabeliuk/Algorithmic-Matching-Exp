@@ -2,7 +2,7 @@
 Data and code for the Paper "Price of Anarchy in Algorithmic Matching of Romantic Partners"
 
 
-## R
+## R code for plotting Figures
 
 ### Dependencies
 
