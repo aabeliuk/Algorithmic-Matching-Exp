@@ -6,12 +6,14 @@ Data and code for the Paper "Price of Anarchy in Algorithmic Matching of Romanti
 
 ### Dependencies
 
-
-### installation
-
 ```
 install.packages('Hmisc')
-install.packages("wesanderson")
+```
+
+
+### Running
+
+``
 setwd("<path-to-repo>/Code/")
 source('plot.R')
 ```
