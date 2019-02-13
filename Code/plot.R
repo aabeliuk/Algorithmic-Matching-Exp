@@ -15,6 +15,7 @@
 library(utils)
 library(ggplot2)
 library(Hmisc)
+library(wesanderson)
 
 
 
@@ -1016,9 +1017,36 @@ solve.poa <- function(a){
   #Equation 7 in manuscript gives
   
   fun <- function (u,a) u/2 - ((1 - u)^(-a)*(a*u - 2*u + 1))/(1+u*(1-u)^(1-a))^2
-  uni<-uniroot(fun, c(0, 1),0.0)$root
+  uni<-uniroot(fun, c(0, 1),a)$root
   return(uni/2)
   
+}
+
+plot.example1 <- function(){
+ 
+  # #plot example 1
+  pdf(file="../Figs/example1.pdf", width=10, height=6)
+  par(mfrow=c(1,2))
+  par(mar=c(5,5,4,1)+.1)
+  
+  #plot distribution q
+  q = function(a,x){x^(1)*(1-x)^(1-a)}
+  alpha<-c(0, 0.3, 0.5, 0.7)
+  l<-c(expression(paste(alpha," = 0")), expression(paste(alpha," = 0.3")), expression(paste(alpha," = 0.5")), expression(paste(alpha," = 0.7")))
+  # col<-rainbow(length(alpha))
+  col <- wes_palette(n=length(alpha), name="GrandBudapest1")
+  line_type=c(1,2,3,4)
+  for(i in seq_along(alpha)) {
+    curve(q(alpha[i],x), from=0, to=1, xlab="Utility", ylab="Probability (q)", add=i!=1, col=col[i],ylim=c(0,0.6), cex.lab=1.8, cex.axis=1.2, cex.main=1.7, cex.sub=1.5,lwd=4,lty=line_type[i], cex=3)
+  }
+  legend(-0.08,0.64,l, col=col, lty=line_type, bty = "n", cex=1.4,lwd=3)
+  
+  #Numerically compute PoA
+  x= c(0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.99) #alphas
+  poa = sapply(x, solve.poa)
+  plot(x,poa, type="b",cex=1.5, lwd=2, cex.lab=1.8, cex.axis=1.2, cex.main=1.7, cex.sub=1.5, xlab=expression(alpha), ylab="Price of Anarchy",ylim=c(0,0.5),pch=19)
+  dev.off()
+   
 }
 
 
@@ -1188,6 +1216,8 @@ plot.study <- function(study){
 plot.study("study_a")
 plot.study("study_b")
 plot.study("study_c")
+
+plot.example1()
 
 
 
