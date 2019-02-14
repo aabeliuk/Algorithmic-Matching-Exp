@@ -15,7 +15,7 @@ install.packages('ggplot2')
 ```
 
 ### Reproduction Instruction
-To reproduce all the figures in the manuscript (except example 2), once dependencies are installed, type:
+To reproduce all the figures in the manuscript (except, example 2), once dependencies are installed, type:
 ```
 setwd("<path-to-repo>/Code/")
 source('plot.R')
@@ -36,3 +36,11 @@ Requires the following two optimization solvers: Pulp(https://pythonhosted.org/P
 pip install pulp
 conda install -c mutirri pyopt
 ```
+
+### Reproduction Instruction
+To reproduce the results from example 2 (in Supplementary Material) once dependencies are installed, run:
+```
+python dating_competition.py 
+```
+This will generate an image "example2.png" in the Figs folder.
+
