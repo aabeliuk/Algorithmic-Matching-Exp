@@ -12,6 +12,7 @@ We have tested the code with R version 3.4.1 (2017-06-30) and Python 2.7.14 :: A
 ```
 install.packages('Hmisc')
 install.packages('ggplot2')
+install.packages('wesanderson')
 ```
 
 ### Reproduction Instruction
