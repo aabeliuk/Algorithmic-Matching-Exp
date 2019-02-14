@@ -2,8 +2,8 @@
 Data and code for the Paper "Price of Anarchy in Algorithmic Matching of Romantic Partners"
 
 
-## code for plotting Figures
-We have tested with R version 3.4.1 (2017-06-30) and Python 2.7.14 :: Anaconda custom (64-bit) in Mac OSX Sierra (on MacBook Pro).
+## Code for plotting Figures
+We have tested the code with R version 3.4.1 (2017-06-30) and Python 2.7.14 :: Anaconda custom (64-bit) in Mac OSX Sierra (on MacBook Pro).
 
 ## R 
 
