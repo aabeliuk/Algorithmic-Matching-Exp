@@ -20,7 +20,7 @@ To reproduce all the figures in the manuscript (except, example 2), once depende
 setwd("<path-to-repo>/Code/")
 source('plot.R')
 ```
-
+This will generate all images in the Figs folder.
 Note that `<path-to-repo>` must be replaced with the path to your local copy of the repo.
 
 ## Python
@@ -37,7 +37,7 @@ pip install pulp
 conda install -c mutirri pyopt
 ```
 
-### Reproduction Instruction
+### Reproduction Instructions
 To reproduce the results from example 2 (in Supplementary Material) once dependencies are installed, run:
 ```
 python dating_competition.py 
