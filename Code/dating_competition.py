@@ -1,5 +1,4 @@
 import numpy as np
-import pickle
 import time
 from math import pow
 from math import ceil
@@ -15,8 +14,8 @@ from pyOpt import Optimization
 # from pyOpt import pySNOPT
 # from pyOpt import pyMMA
 from pyOpt import SLSQP
-from pyOpt import CONMIN
-from pyOpt import COBYLA
+# from pyOpt import CONMIN
+# from pyOpt import COBYLA
 # from pyOpt import SOLVOPT
 # from pyOpt import KSOPT
 # from pyOpt import NSGA2
@@ -568,7 +567,7 @@ def objfunc_self(xl,**kwargs):
 		g.append(sum([x[j][i] for j in range(n)])-1.0)
 
 	fail = 0
-  	return -1.0*f,g,fail
+	return -1.0*f,g,fail
 
 
 def objfunc_utility(xl,**kwargs):
@@ -597,7 +596,7 @@ def objfunc_utility(xl,**kwargs):
 		g.append(sum([x[j][i] for j in range(n)])-1.0)
 
 	fail = 0
-  	return -1.0*obj,g,fail
+	return -1.0*obj,g,fail
 
  
 
@@ -678,7 +677,7 @@ def objfunc_online_self_utility(x,**kwargs):
 	g.append(sum([x[i] for i in range(n)])-1.0)
 
 	fail = 0
-  	return -1.0*f,g,fail
+	return -1.0*f,g,fail
 
 
 def objfunc_competition(xl,**kwargs):
@@ -709,7 +708,7 @@ def objfunc_competition(xl,**kwargs):
 		g.append(sum([x[j][i] for j in range(n)])-1.0)
 
 	fail = 0
-  	return -1.0*f,g,fail
+	return -1.0*f,g,fail
 
 
 
@@ -734,7 +733,7 @@ def objfunc_online_competition(x,**kwargs):
 	g.append(sum([x[i] for i in range(n)])-1.0)
 
 	fail = 0
-  	return -1.0*f,g,fail
+	return -1.0*f,g,fail
 
 
 
@@ -814,8 +813,8 @@ def centralizedPoa(n,exps,e,x):
 	for i in range(exps):
 		u = create_weights4(n)
 		# a= np.random.uniform(1.5,2)
-	 	# b= np.random.uniform(1.5,2)
-	 	a = b = 2 
+		# b= np.random.uniform(1.5,2)
+		a = b = 2 
 		epsilon = e 
 		s = solve_competition(u,n,a,b,epsilon,objfunc_competition)
 		# print "self", s
@@ -853,7 +852,7 @@ def poa(epsilon):
 	mean = np.mean(r)
 	max_poa =  max(r)
 	min_poa = min(r)
-	print epsilon,mean, max_poa, min_poa
+	print(epsilon,mean, max_poa, min_poa)
 	return mean, max_poa, min_poa
 
 
@@ -864,7 +863,7 @@ if __name__ == "__main__":
 
 	epsilon = [1.,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1,0.05,0.01,0.005]
 	# epsilon = [1.,0.8,0.6,0.4,0.2,0.1,0.05,0.01,0.005]
-	print "epsilon, mean, max, min"
+	print("epsilon, mean, max, min")
 	for e in epsilon:
 		mean, max_poa, min_poa = poa(e)
 		mean_r.append(mean)
@@ -875,10 +874,10 @@ if __name__ == "__main__":
 	print(max_r)
 	print(min_r)
 
-	# centralizedPoa(5,1,0.005,1)
-	# n=4
-	# u = create_weights6(n)
-	# histogram_weights(u)
+	plt.scatter(epsilon,min_r)
+	# plt.show()
+	plt.savefig("../Figs/example2.png")
+
 
 	
 
