@@ -38,7 +38,7 @@ conda install -c mutirri pyopt
 ```
 
 ### Reproduction Instructions
-To reproduce the results from example 2 (in Supplementary Material) once dependencies are installed, run:
+To reproduce the results from example 2 (in Supplementary Material), once dependencies are installed, run:
 ```
 python dating_competition.py 
 ```
