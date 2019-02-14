@@ -22,6 +22,7 @@ setwd("<path-to-repo>/Code/")
 source('plot.R')
 ```
 This will generate all images in the Figs folder.
+
 Note that `<path-to-repo>` must be replaced with the path to your local copy of the repo.
 
 ## Python
