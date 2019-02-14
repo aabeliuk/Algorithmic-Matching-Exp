@@ -29,8 +29,10 @@ Note that `<path-to-repo>` must be replaced with the path to your local copy of 
 ### Dependencies
 Requires Numpy, Scipy and Matplotlib. These dependencies can be installed via Anaconda distribution of Python.
 
-Requires the following two optimization solvers:
+Requires the following two optimization solvers: Pulp(https://pythonhosted.org/PuLP/) and pyOpt (http://www.pyopt.org/)
 
-Pulp: pip install pulp (https://pythonhosted.org/PuLP/)
-
-pyOpt: conda install -c mutirri pyopt (http://www.pyopt.org/)
+## Installation
+```
+pip install pulp
+conda install -c mutirri pyopt
+```
