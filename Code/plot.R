@@ -220,19 +220,28 @@ poa.mean <- function(mydata.S, mydata.F) {
 poa.total <- function(mydata.S, mydata.F) {
   
   payoff.S = aggregate(list(total_payoff=mydata.S$total_payoff), by=list( group_id=mydata.S$group_id, role_id=mydata.S$role_id, session.code=mydata.S$session.code), FUN=mean, na.rm=TRUE)
+  users.S = aggregate(list(users=mydata.S$total_payoff), by=list( group_id=mydata.S$group_id, role_id=mydata.S$role_id, session.code=mydata.S$session.code), FUN=length)
+  payoff.S = merge(payoff.S, users.S, by=c("group_id", "role_id", "session.code") )
+  #mean payoff per user
+  payoff.S$mean_payoff=payoff.S$total_payoff/payoff.S$users
+  
   payoff.F = aggregate(list(total_payoff=mydata.F$total_payoff), by=list( group_id=mydata.F$group_id, role_id=mydata.F$role_id, session.code=mydata.F$session.code), FUN=mean, na.rm=TRUE)
+  users.F = aggregate(list(users=mydata.F$total_payoff), by=list( group_id=mydata.F$group_id, role_id=mydata.F$role_id, session.code=mydata.F$session.code), FUN=length)
+  payoff.F = merge(payoff.F, users.F, by=c("group_id", "role_id", "session.code") )
+  #mean payoff per user
+  payoff.F$mean_payoff=payoff.F$total_payoff/payoff.F$users
   
-  
-  poa <- cbind(round(payoff.S[4]/payoff.F[4],3))
+  poa <- cbind(round(payoff.S[6]/payoff.F[6],3))
   colnames(poa)<-"study"
   # colnames(poa) <- seq(1,10)
   poa.mean.stage = apply(poa,2,mean)
   poa.min.stage = apply(poa,2,min)
   poa.max.stage = apply(poa,2,max)
   poa.std = apply(poa,2,std)
-  print(poa.mean.stage)
-  print(poa.min.stage)
-  print(poa.max.stage)
+  
+  print(paste0("poa mean = ", poa.mean.stage))
+  print(paste0("poa min = ", poa.min.stage))
+  print(paste0("poa max = ", poa.max.stage))
   
   
   barCenters <- barplot(poa.mean.stage, ylim = c(0,poa.max.stage), xlab="", ylab="Price of Anarchy",pch=18,cex=2,cex.lab=2.,cex.axis=1.7)
@@ -1117,6 +1126,7 @@ read.data <- function(study) {
 }
 
 plot.study <- function(study){
+  print(study)
   
   #load data
   mydata = read.data(study)
@@ -1213,9 +1223,9 @@ plot.study <- function(study){
 
 #plot all figures
 
-plot.study("study_a")
-plot.study("study_b")
-plot.study("study_c")
+plot.study("study_A")
+plot.study("study_B")
+plot.study("study_C")
 
 plot.example1()
 
