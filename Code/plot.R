@@ -235,17 +235,17 @@ poa.total <- function(mydata.S, mydata.F) {
   colnames(poa)<-"study"
   # colnames(poa) <- seq(1,10)
   poa.mean.stage = apply(poa,2,mean)
-  poa.min.stage = apply(poa,2,min)
-  poa.max.stage = apply(poa,2,max)
-  poa.std = apply(poa,2,std)
-  
+  poa.se = apply(poa,2,sem)
+  # poa.max.stage = apply(poa,2,sem)
+  # poa.std = apply(poa,2,std)
+  # 
   print(paste0("poa mean = ", poa.mean.stage))
-  print(paste0("poa min = ", poa.min.stage))
-  print(paste0("poa max = ", poa.max.stage))
+  print(paste0("poa min = ", poa.mean.stage-poa.se))
+  print(paste0("poa max = ", poa.mean.stage+poa.se))
   
   
-  barCenters <- barplot(poa.mean.stage, ylim = c(0,poa.max.stage), xlab="", ylab="Price of Anarchy",pch=18,cex=2,cex.lab=2.,cex.axis=1.7)
-  errbar(barCenters,poa.mean.stage,  poa.max.stage, poa.min.stage, add=T, xlab="", pch='.')
+  barCenters <- barplot(poa.mean.stage, ylim = c(0,poa.mean.stage+poa.se), xlab="", ylab="Price of Anarchy",pch=18,cex=2,cex.lab=2.,cex.axis=1.7)
+  errbar(barCenters,poa.mean.stage,  poa.mean.stage+poa.se, poa.mean.stage-poa.se, add=T, xlab="", pch='.')
   # errbar(barCenters,poa.mean.stage, poa.max.stage, poa.min.stage, add=T, xlab="", pch='.')
   
   return(poa)
