@@ -1027,7 +1027,7 @@ solve.poa <- function(a){
   
   fun <- function (u,a) u/2 - ((1 - u)^(-a)*(a*u - 2*u + 1))/(1+u*(1-u)^(1-a))^2
   uni<-uniroot(fun, c(0, 1),a)$root
-  return(uni/4)
+  return(uni/2)
   
 }
 
